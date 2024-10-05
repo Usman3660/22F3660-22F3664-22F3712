@@ -106,6 +106,8 @@ public class TextEditor extends JFrame{
         openMenuItem = new JMenuItem("Open");
         saveMenuItem = new JMenuItem("Save");
         saveAsMenuItem = new JMenuItem("Save As");
+        JMenuItem increaseFontSizeItem = new JMenuItem("Increase Font Size");
+        JMenuItem decreaseFontSizeItem = new JMenuItem("Decrease Font Size");
         exitMenuItem = new JMenuItem("Exit");
 
         // Action Listeners for File Menu
@@ -113,6 +115,8 @@ public class TextEditor extends JFrame{
         openMenuItem.addActionListener(e -> openFile());
         saveMenuItem.addActionListener(e -> saveFile());
         saveAsMenuItem.addActionListener(e -> saveFileAs());
+        increaseFontSizeItem.addActionListener(e -> changeFontSize(2));
+        decreaseFontSizeItem.addActionListener(e -> changeFontSize(-2));
         exitMenuItem.addActionListener(e -> System.exit(0));
 
         // Add items to File Menu
@@ -161,6 +165,8 @@ public class TextEditor extends JFrame{
 
         // Add items to View Menu
         viewMenu.add(wordWrapMenuItem);
+        viewMenu.add(increaseFontSizeItem);
+        viewMenu.add(decreaseFontSizeItem);
 
         // Help Menu
         helpMenu = new JMenu("Help");
@@ -400,6 +406,12 @@ public class TextEditor extends JFrame{
 
     private void showAboutDialog() {
         JOptionPane.showMessageDialog(this, "Text Editor\nVersion 1.0\nCopyright 2023", "About", JOptionPane.INFORMATION_MESSAGE);
+    }
+    private void changeFontSize(int delta) {
+        JTextArea textArea = (JTextArea) ((JScrollPane) ((JPanel) tabbedPane.getSelectedComponent()).getComponent(0)).getViewport().getView();
+        Font currentFont = textArea.getFont();
+        int newSize = Math.max(10, currentFont.getSize() + delta); // Prevent font size from becoming too small
+        textArea.setFont(new Font(currentFont.getFontName(), currentFont.getStyle(), newSize));
     }
 
     public static void main(String[] args) {
