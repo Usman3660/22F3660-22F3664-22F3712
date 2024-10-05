@@ -401,6 +401,10 @@ public class TextEditor extends JFrame{
     private void showAboutDialog() {
         JOptionPane.showMessageDialog(this, "Text Editor\nVersion 1.0\nCopyright 2023", "About", JOptionPane.INFORMATION_MESSAGE);
     }
+    //for git only have to remove this afterward
+    public String searchBook(String bookName) {
+    	return bookName;
+    	}
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> new TextEditor());
