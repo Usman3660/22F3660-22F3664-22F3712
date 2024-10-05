@@ -413,7 +413,13 @@ public class TextEditor extends JFrame{
         int newSize = Math.max(10, currentFont.getSize() + delta); // Prevent font size from becoming too small
         textArea.setFont(new Font(currentFont.getFontName(), currentFont.getStyle(), newSize));
     }
-
+       public void removeBook(String bookName) {
+if (books.remove(bookName)) {
+System.out.println(bookName + "removed from library.");
+} else {
+System.out.println(bookName + "not book found in library.");
+}
+}
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> new TextEditor());
     }
