@@ -415,9 +415,9 @@ public class TextEditor extends JFrame{
     }
        public void removeBook(String bookName) {
 if (books.remove(bookName)) {
-System.out.println(bookName + &quot; removed from library.&quot;);
+System.out.println(bookName + "removed from library.");
 } else {
-System.out.println(bookName + &quot; not found in library.&quot;);
+System.out.println(bookName + "not found in library.");
 }
 }
     public static void main(String[] args) {
